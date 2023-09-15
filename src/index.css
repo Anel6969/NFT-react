@@ -1,69 +1,137 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --primary-color-soft-blue: hsl(215, 51%, 70%);
+  --primary-color-cyan: hsl(178, 100%, 50%);
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  --neutral-color-darkblue-bg: hsl(217, 54%, 11%);
+  --neutral-color-darkblue-cardbg: hsl(216, 50%, 16%);
+  --neutal-color-darkblue-line: hsl(215, 32%, 27%);
+  --neutral-coolor-white: hsl(0, 0%, 100%);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
 
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: grid;
+  place-content: center;
+
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--neutral-color-darkblue-bg);
+  color: var(--neutral-coolor-white);
+}
+
+.card-container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  -webkit-box-pack: center;
+  place-content: center;
+  -webkit-box-align: center;
+  flex-direction: column;
   min-height: 100vh;
+  height: 100vh;
+  width: 100%;
 }
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.nft-card {
+  display: grid;
+  place-content: center;
+  background-color: var(--neutral-color-darkblue-cardbg);
+  height: 550px;
+  width: 320px;
+  border-radius: 16px;
 }
-
-button {
+.card-content {
+  display: grid;
+  align-items: center;
+  text-align: left;
+  gap: 1rem;
+  width: 270px;
+}
+.eq-img {
+  height: 270px;
+  width: auto;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  margin-bottom: 0.8rem;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.image {
+  position:relative;
+  height: 270px;
+  width: auto;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.image:after {
+  content:'\A';
+  position:absolute;
+  width:100%; 
+  height:100%;
+  top:0; 
+  left:0;
+  background: hsl(178, 100%, 50%, 0.4);
+  background-image: url(./images/icon-view.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 8px;
+  opacity:0;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  cursor: pointer;
+}
+.image:hover:after {
+  opacity:1;
+}
+.eth-number {
+  width: fit-content;
+}
+.eth-number:hover {
+  color: var(--primary-color-cyan);
+}
+.card-content p {
+  color: var(--primary-color-soft-blue);
+  font-weight: 100;
+}
+.eth-and-days {
+  display: flex;
+  justify-content: space-between;
+}
+.eth {
+  display: flex;
+  gap: 0.5rem;
+}
+.eth-icon,.clock-icon {
+  place-self: center;
+  height: 18px;
+}
+.eth p {
+  color: var(--primary-color-cyan);
+  font-weight: 600;
+}
+.days-left {
+  display: flex;
+  gap: 0.5rem;
+}
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--primary-color-soft-blue);
+}
+.creator {
+  display: flex;
+  align-items: center;
+}
+.creator p,span {
+  font-weight: 500;
+}
+.avatar {
+  border: 2px solid var(--neutral-coolor-white);
+  border-radius: 2rem;
+  height: 40px;
+  margin-right: 1rem;
+}
+.name {
+  color: var(--neutral-coolor-white);
+}
+.name:hover {
+  color: var(--primary-color-cyan);
 }
